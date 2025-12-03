@@ -16,4 +16,15 @@ import jakarta.ws.rs.core.Application;
 
 @ApplicationPath("system")
 public class SampleApplication extends Application {
+
+   static {
+        try {
+            System.out.println("Delaying application startup for 100 seconds...");
+            Thread.sleep(100000); // 100 seconds delay
+            System.out.println("Application startup delay completed.");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.err.println("Startup delay was interrupted: " + e.getMessage());
+        }
+    }
 }
